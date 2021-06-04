@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script>
+        function StartGame() {
+            window.location.href = 'memory.html';
+        }
+    </script>
+    <style>
+        body {
+            background-image: url("Background.gif");
+        }
+
+
+        #centerText {
+            text-align: center;
+            size: 100px;
+
+        }
+
+        #hidden {
+            display: none;
+        }
+
+        #centerChooseQuestion {
+            display: flex;
+            position: relative;
+            align-items: center;
+            flex-direction: column;
+            top: 180px;
+        }
+
+        #MoveDown {
+            display: flex;
+            position: relative;
+            align-items: center;
+            flex-direction: column;
+            margin-left: auto;
+            margin-right: auto;
+            top: 190px;
+        }
+
+        #MoveDownButton {
+            display: flex;
+            position: relative;
+            align-items: center;
+            flex-direction: column;
+            margin-left: auto;
+            margin-right: auto;
+            top: 260px;
+        }
+
+        #RedColorText {
+            color: lightgreen;
+        }
+
+        .color{
+            background-color: blue;
+            color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="centerText">
+        <h1 id="RedColorText"><Span class="color"> WELLCOME TO THE POkÉMON MEMORY CARD GAME</Span></h1>
+        <br>
+        <h1><Span class="color">You need to get 2 cards with the same front. If you get them all, you will win!</Span></h1>
+        <h1><Span class="color">Here you can choose the Pokémon generation (from the Pokémon games) and the difficulty.</Span></h1>
+        <br>
+        <h2><Span class="color">Choose a generation of Pokémon (Gen1 - Gen2 - Gen3)</Span></h2>
+        <select>
+            <option>Gen1</option>
+            <option>Gen2</option>
+            <option>Gen3</option>
+        </select>
+
+        <h2 id="MoveDown"><Span class="color">Difficulties: Easy = 40 Lifes // Medium = 20 Lifes // Hard = 5 Lifes</Span></h2>
+        <!--Diogo COUNT the cards and edit the numbers-->
+        <h3 id="centerChooseQuestion"><Span class="color">Choose your difficulty:</Span></h3>
+        <select id="MoveDown">
+            <option>Easy</option>
+            <option>Medium</option>
+            <option>Hard</option>
+        </select>
+    </div>
+    <button id="MoveDownButton" onclick="StartGame();">Start Game</button>
+    <audio id="hidden" control loop autoplay src="PokemonIntro.mp3"></audio>
+</body>
+
+</html>
