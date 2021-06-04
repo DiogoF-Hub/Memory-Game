@@ -5,7 +5,7 @@ let ShuffledPokemonImages = [];
 let arrayOfCardIds = [];
 
 let firstCardRevealed = 0;
-   
+
 let CardRevealed = 0;
 
 let lifes = 2;
@@ -28,7 +28,15 @@ function Start() {
 
     document.getElementById("lifesId").innerHTML = "Lifes left: " + lifes;
 
- 
+    //if (mode == hard) {
+    for (; PokemonImages.length > 0;) {
+        let randomPokemonImage = Math.floor(Math.random() * PokemonImages.length);
+        ShuffledPokemonImages.push(PokemonImages[randomPokemonImage])
+        PokemonImages.splice(randomPokemonImage, 1)
+
+    }
+    PokemonImages = ShuffledPokemonImages;
+    //}
 
 
     for (let i = 0; i < PokemonImages.length; i++) {
