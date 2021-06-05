@@ -26,10 +26,18 @@ let lifesHTML = '<h1><span class="color" id="lifesId"></span></h1>';
 let modeHTML = '<h2><span class="color" id="modeLevelId"></span></h2>';
 let gamediv = '<div id="myGame" class="allCards"></div>';
 
+let peppa = 0
 
 function Start() {
     var PlayTheme = new Audio('PokemonGen1GameTheme.mp3');
-    PlayTheme.play();
+    var EastereggTheme = new Audio('Numa_Numa_yay.mp3');
+
+    if(peppa == 0){
+        PlayTheme.play();
+    } else {
+        EastereggTheme.play();
+    }
+    
 
     //modevalue = document.getElementById("ModeDifficultySelect").value;
 
