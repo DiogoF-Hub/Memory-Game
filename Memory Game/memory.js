@@ -1,3 +1,8 @@
+
+
+//Memory.html
+
+
 let PokemonImages = ["Pikachu.png", "Charmeleon.png", "Caterpie.png", "Shiny.png", "Lugia.png", "Shiggy.png", "Ghost.png", "Gengar.png", "Greninja.png", "Onix.png", "Toxiped.png", "Bulbasaur.png", "gyarados.png", "Pikachu.png", "Charmeleon.png", "Caterpie.png", "Shiny.png", "Lugia.png", "Shiggy.png", "Ghost.png", "Gengar.png", "Greninja.png", "Onix.png", "Toxiped.png", "Bulbasaur.png", "gyarados.png"]
 
 let ShuffledPokemonImages = [];
@@ -8,27 +13,48 @@ let firstCardRevealed = 0;
 
 let CardRevealed = 0;
 
-let lifes = 2;
+let lifes = 0;
 
-/*let mode = hard;
+let EasyMode = "Easy";
+let MediumMode = "Medium";
+let HardMode = "Hard";
 
-function Easymode() {
-    mode = easy;
-    document.getElementById("buttonmode").innerHTML = "Hard Mode";
-    Start();
-}
+let modevalue = "Hard";
 
-function Hardmode() {
-    mode = hard;
-    document.getElementById("buttonmode").innerHTML = "Easy Mode";
-    Start();
-}*/
+//game started html
+let lifesHTML = '<h1><span class="color" id="lifesId"></span></h1>';
+let modeHTML = '<h2><span class="color" id="modeLevelId"></span></h2>';
+let gamediv = '<div id="myGame" class="allCards"></div>';
+
 
 function Start() {
+    var PlayTheme = new Audio('PokemonGen1GameTheme.mp3');
+    PlayTheme.play();
+
+    //modevalue = document.getElementById("ModeDifficultySelect").value;
+
+    document.body.innerHTML = " ";
+    document.body.innerHTML += lifesHTML;
+    document.body.innerHTML += modeHTML;
+    document.body.innerHTML += gamediv;
+
+
+    if(modevalue == "Easy"){
+        lifes = 35;
+    }
+
+    if(modevalue == "Medium"){
+        lifes = 20;
+    }
+
+    if(modevalue == "Hard"){
+        lifes = 10;
+    }
 
     document.getElementById("lifesId").innerHTML = "Lifes left: " + lifes;
+    document.getElementById("modeLevelId").innerHTML = "Level: " + modevalue;
 
-    //if (mode == hard) {
+    
     for (; PokemonImages.length > 0;) {
         let randomPokemonImage = Math.floor(Math.random() * PokemonImages.length);
         ShuffledPokemonImages.push(PokemonImages[randomPokemonImage])
@@ -36,7 +62,6 @@ function Start() {
 
     }
     PokemonImages = ShuffledPokemonImages;
-    //}
 
 
     for (let i = 0; i < PokemonImages.length; i++) {
@@ -46,7 +71,7 @@ function Start() {
         arrayOfCardIds.push(newImage.id);
         newImage.classList.add("oneCard");
         document.getElementById("myGame").append(newImage);
-        newImage.addEventListener("click", function () { cardClicked(newImage.id, i); });  //Q try to change this
+        newImage.addEventListener("click", function () { cardClicked(newImage.id, i); });
     }
 }
 
@@ -110,3 +135,26 @@ function putAllImageBack() {
     }
 }
 
+
+function easymode() {
+    modevalue = "Easy";
+    Start();
+}
+
+function mediummode() {
+    modevalue = "Medium";
+    Start();
+}
+
+function hardmode() {
+    modevalue = "Hard";
+    Start();
+}
+
+
+
+//StartScreen.html
+
+function StartGame() {
+    window.location.href = 'memory.html';
+}
