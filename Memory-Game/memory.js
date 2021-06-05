@@ -5,6 +5,10 @@
 
 let PokemonImages = ["Pikachu.png", "Charmeleon.png", "Caterpie.png", "Shiny.png", "Lugia.png", "Shiggy.png", "Ghost.png", "Gengar.png", "Greninja.png", "Onix.png", "Toxiped.png", "Bulbasaur.png", "gyarados.png", "Pikachu.png", "Charmeleon.png", "Caterpie.png", "Shiny.png", "Lugia.png", "Shiggy.png", "Ghost.png", "Gengar.png", "Greninja.png", "Onix.png", "Toxiped.png", "Bulbasaur.png", "gyarados.png"]
 
+let PokemonGen1 = [];
+let PokemonGen2 = [];
+let PokemonGen3 = [];
+
 let ShuffledPokemonImages = [];
 
 let arrayOfCardIds = [];
@@ -22,15 +26,15 @@ let HardMode = "Hard";
 let modevalue = "Hard";
 
 //game started html
-let lifesHTML = '<h1><span class="color" id="lifesId"></span></h1>';
-let modeHTML = '<h2><span class="color" id="modeLevelId"></span></h2>';
+let lifesHTML = '<div id="lifeshtmlId"><img id="lifesimg" src="https://fontmeme.com/permalink/210605/3cc35532ed01e7cd47cdc80d5367feb7.png" alt="pokemon-font"></div>'
+let modeHTML = '<div id="modehtmlId"><img id="modeimg" src="https://fontmeme.com/permalink/210605/84d210e951f3f215a5acbd5a523dd731.png" alt="pokemon-font"></div>'
 let gamediv = '<div id="myGame" class="allCards"></div>';
 
 let peppa = 0
 
 function Start() {
-    var PlayTheme = new Audio('PokemonGen1GameTheme.mp3');
-    var EastereggTheme = new Audio('Numa_Numa_yay.mp3');
+    var PlayTheme = new Audio('../Memory-Game/Audio/PokemonGameTheme.mp3');
+    var EastereggTheme = new Audio('../Memory-Game/Audio/Numa_Numa_yay.mp3');
 
     if(peppa == 0){
         PlayTheme.play();
@@ -59,22 +63,16 @@ function Start() {
         lifes = 10;
     }
 
-    document.getElementById("lifesId").innerHTML = "Lifes left: " + lifes;
-    document.getElementById("modeLevelId").innerHTML = "Level: " + modevalue;
+    document.getElementById("lifeshtmlId").innerHTML += lifes;
+    document.getElementById("modehtmlId").innerHTML += modevalue;
 
     
-    for (; PokemonImages.length > 0;) {
-        let randomPokemonImage = Math.floor(Math.random() * PokemonImages.length);
-        ShuffledPokemonImages.push(PokemonImages[randomPokemonImage])
-        PokemonImages.splice(randomPokemonImage, 1)
 
-    }
-    PokemonImages = ShuffledPokemonImages;
 
 
     for (let i = 0; i < PokemonImages.length; i++) {
         let newImage = document.createElement("img");
-        newImage.src = "CardBack.png";
+        newImage.src = "../Memory-Game/Images/CardBack.PNG";
         newImage.id = "CardNo" + i;
         arrayOfCardIds.push(newImage.id);
         newImage.classList.add("oneCard");
@@ -91,7 +89,7 @@ function cardClicked(idOfClickedCard, PokemonIndex) {
         CardRevealed++;
         if (CardRevealed == 1) firstCardRevealed = idOfClickedCard;
 
-        var cardClickedAudio = new Audio('Pokemon_(A_Button).mp3');
+        var cardClickedAudio = new Audio('../Memory-Game/Audio/Pokemon_(A_Button).mp3');
         cardClickedAudio.play();
 
         if (CardRevealed == 2) {
@@ -116,7 +114,7 @@ function cardClicked(idOfClickedCard, PokemonIndex) {
 
 
             lifes--;
-            document.getElementById("lifesId").innerHTML = "Lifes left: " + lifes;
+            document.getElementById("lifesId").innerHTML = "Lives left: " + lifes;
 
             setTimeout(function () {
                 putAllImageBack();   //Q try to change this
@@ -137,7 +135,7 @@ function putAllImageBack() {
     }
 
     for (CardIds of arrayOfCardIds) {
-        document.getElementById(CardIds).src = "CardBack.png";
+        document.getElementById(CardIds).src = "../Memory-Game/Images/CardBack.PNG";
         firstCardRevealed = 0;
         CardRevealed = 0;
     }
@@ -164,5 +162,5 @@ function hardmode() {
 //StartScreen.html
 
 function StartGame() {
-    window.location.href = 'memory.html';
+    window.location.href = 'memory.html'; 
 }
