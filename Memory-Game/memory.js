@@ -7,7 +7,7 @@ let PokemonImages = [];
 
 let PokemonGen1 = ["Bulbasaur.png", "Caterpie.png", "Charmeleon.png", "Gengar.png", "Ghost.png", "Gyarados.png", "Magikarp.png", "Mewtwo.png", "Nidoking.png", "Onix.png", "Pidgeot.png", "Pikachu.png", "Shiggy.png", "Weezing.png", "Zapdos.png", "Bulbasaur.png", "Caterpie.png", "Charmeleon.png", "Gengar.png", "Ghost.png", "Gyarados.png", "Magikarp.png", "Mewtwo.png", "Nidoking.png", "Onix.png", "Pidgeot.png", "Pikachu.png", "Shiggy.png", "Weezing.png", "Zapdos.png"];
 let PokemonGen2 = ["Azumarill.png", "Chikorita.png", "Espeon.png", "Granbull.png", "Hooh.png", "Kingdra.png", "Lugia.png", "Mantine.png", "Miltank.png", "Porygon2.png", "Slugma.png", "Steelix.png", "Tryanitar.png", "Typhlosion.png", "Wobbuffet.png", "Azumarill.png", "Chikorita.png", "Espeon.png", "Granbull.png", "Hooh.png", "Kingdra.png", "Lugia.png", "Mantine.png", "Miltank.png", "Porygon2.png", "Slugma.png", "Steelix.png", "Tryanitar.png", "Typhlosion.png", "Wobbuffet.png"];
-let PokemonGen3 = ["Absol.png", "Blaziken.png", "Gardevoir.png", "Groudon.png", "Kyogre.png", "Lunatone.png", "Mawile.png", "Metagross.png", "Minun.png", "Plusle.png", "Regice.png", "Reptain.png", "Sableye.png", "Sharpedo.png", "Swellow.png", "Absol.png", "Blaziken.png", "Gardevoir.png", "Groudon.png", "Kyogre.png", "Lunatone.png", "Mawile.png", "Metagross.png", "Minun.png", "Plusle.png", "Regice.png", "Regice.png", "Reptain.png", "Sableye.png", "Sharpedo.png", "Swellow.png"];
+let PokemonGen3 = ["Absol.png", "Blaziken.png", "Gardevoir.png", "Groudon.png", "Kyogre.png", "Lunatone.png", "Mawile.png", "Metagross.png", "Minun.png", "Plusle.png", "Regice.png", "Reptain.png", "Sableye.png", "Sharpedo.png", "Swellow.png", "Absol.png", "Blaziken.png", "Gardevoir.png", "Groudon.png", "Kyogre.png", "Lunatone.png", "Mawile.png", "Metagross.png", "Minun.png", "Plusle.png", "Regice.png", "Reptain.png", "Sableye.png", "Sharpedo.png", "Swellow.png"];
 
 let ShuffledPokemonImages = [];
 
@@ -80,7 +80,6 @@ function Start() {
         PokemonImages = PokemonGen3;
     }
 
-
     for (; PokemonImages.length > 0;) {
         let randomPokemonImage = Math.floor(Math.random() * PokemonImages.length);
         ShuffledPokemonImages.push(PokemonImages[randomPokemonImage])
@@ -88,7 +87,7 @@ function Start() {
 
     }
     PokemonImages = ShuffledPokemonImages;
-
+ 
 
     for (let i = 0; i < PokemonImages.length; i++) {
         let newImage = document.createElement("img");
