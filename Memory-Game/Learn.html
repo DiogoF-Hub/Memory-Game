@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Learn</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script>
+        function Goback() {
+            window.location.href = 'START.html';
+        }
+    </script>
+    <style>
+        body {
+            background-image: url("../Memory-Game/Images/Wallpapers/My_Video1.gif");
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+
+        div {
+            margin: 0%;
+            text-align: center;
+        }
+
+
+        .overlay {
+            margin: 20px;
+            transform: translate(0, 25%);
+            position: relative;
+            text-align: center;
+            color: white;
+        }
+
+        #hidden {
+            display: none;
+        }
+
+        #CenterButton {
+            margin: 0;
+            position: absolute;
+            top: 95%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        .moveButtonDown {
+            top: 200px;
+        }
+
+
+        .block {
+            display: block;
+        }
+
+        @font-face {
+            font-family: myFirstFont;
+            src: url(Poke.ttf);
+        }
+
+        #fontfont {
+            color: yellow;
+            background-color: blue;
+            font-size: 3em;
+        }
+
+        * {
+            font-family: myFirstFont;
+        }
+    </style>
+</head>
+
+<body onload="load();">
+    <div id="centerText">
+        <img class="block" src="https://fontmeme.com/permalink/210606/dae750b3d2ac29373ebee2281a6a1d88.png"
+            alt="pokemon-font">
+        <br>
+        <img class="overlay" src="https://fontmeme.com/permalink/210605/19bd79cee880aa19c49e7bfab381e5d7.png"
+            alt="pokemon-font">
+        <br>
+        <img clas="overlay" src="https://fontmeme.com/permalink/210606/e097e0d1fb7587d71fefc56c3c7a4496.png"
+            alt="pokemon-font">
+        <br>
+        <img class="overlay" src="https://fontmeme.com/permalink/210606/956a192695ab08ca745aa7854bb4c836.png"
+            alt="pokemon-font">
+        <br>
+        <img class="overlay" src="https://fontmeme.com/permalink/210606/779856f92ec4d34aa2886ae7b84579c3.png"
+            alt="pokemon-font">
+        <br>
+        <img class="overlay" src="https://fontmeme.com/permalink/210605/bc6bee4557c783f5bb9469e7e66bd597.png"
+            alt="pokemon-font">
+        <div>
+            <img class="overlay" src="https://fontmeme.com/permalink/210605/93d4ebd954b6552bd4af0ed2050480fb.png"
+                alt="pokemon-font">
+        </div>
+        <button id="CenterButton" onclick="Goback();">Go Back</button>
+    </div>
+
+    <!--<audio id="hidden" control loop autoplay src="PokemonIntro.mp3"></audio>-->
+</body>
+
+</html>

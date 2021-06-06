@@ -3,11 +3,11 @@
 //Memory.html
 
 
-let PokemonImages = ["Pikachu.png", "Charmeleon.png", "Caterpie.png", "Shiny.png", "Lugia.png", "Shiggy.png", "Ghost.png", "Gengar.png", "Greninja.png", "Onix.png", "Toxiped.png", "Bulbasaur.png", "gyarados.png", "Pikachu.png", "Charmeleon.png", "Caterpie.png", "Shiny.png", "Lugia.png", "Shiggy.png", "Ghost.png", "Gengar.png", "Greninja.png", "Onix.png", "Toxiped.png", "Bulbasaur.png", "gyarados.png"]
+let PokemonImages = [];
 
-let PokemonGen1 = [];
-let PokemonGen2 = [];
-let PokemonGen3 = [];
+let PokemonGen1 = ["Bulbasaur.png", "Caterpie.png", "Charmeleon.png", "Gengar.png", "Ghost.png", "Gyarados.png", "Magikarp.png", "Mewtwo.png", "Nidoking.png", "Onix.png", "Pidgeot.png", "Pikachu.png", "Shiggy.png", "Weezing.png", "Zapdos.png", "Bulbasaur.png", "Caterpie.png", "Charmeleon.png", "Gengar.png", "Ghost.png", "Gyarados.png", "Magikarp.png", "Mewtwo.png", "Nidoking.png", "Onix.png", "Pidgeot.png", "Pikachu.png", "Shiggy.png", "Weezing.png", "Zapdos.png"];
+let PokemonGen2 = ["Azumarill.png", "Chikorita.png", "Espeon.png", "Granbull.png", "Hooh.png", "Kingdra.png", "Lugia.png", "Mantine.png", "Miltank.png", "Porygon2.png", "Slugma.png", "Steelix.png", "Tryanitar.png", "Typhlosion.png", "Wobbuffet.png", "Azumarill.png", "Chikorita.png", "Espeon.png", "Granbull.png", "Hooh.png", "Kingdra.png", "Lugia.png", "Mantine.png", "Miltank.png", "Porygon2.png", "Slugma.png", "Steelix.png", "Tryanitar.png", "Typhlosion.png", "Wobbuffet.png"];
+let PokemonGen3 = ["Absol.png", "Blaziken.png", "Gardevoir.png", "Groudon.png", "Kyogre.png", "Lunatone.png", "Mawile.png", "Metagross.png", "Minun.png", "Plusle.png", "Regice.png", "Regice.png", "Reptain.png", "Sableye.png", "Sharpedo.png", "Swellow.png", "Absol.png", "Blaziken.png", "Gardevoir.png", "Groudon.png", "Kyogre.png", "Lunatone.png", "Mawile.png", "Metagross.png", "Minun.png", "Plusle.png", "Regice.png", "Regice.png", "Reptain.png", "Sableye.png", "Sharpedo.png", "Swellow.png"];
 
 let ShuffledPokemonImages = [];
 
@@ -24,6 +24,7 @@ let MediumMode = "Medium";
 let HardMode = "Hard";
 
 let modevalue = "Hard";
+let genmode = "Gen1";
 
 //game started html
 let lifesHTML = '<div id="lifeshtmlId"><img id="lifesimg" src="https://fontmeme.com/permalink/210605/3cc35532ed01e7cd47cdc80d5367feb7.png" alt="pokemon-font"></div>'
@@ -66,8 +67,27 @@ function Start() {
     document.getElementById("lifeshtmlId").innerHTML += lifes;
     document.getElementById("modehtmlId").innerHTML += modevalue;
 
-    
 
+    if(genmode == "Gen1"){
+        PokemonImages = PokemonGen1;
+    }
+
+    if(genmode == "Gen2"){
+        PokemonImages = PokemonGen2;
+    }
+
+    if(genmode == "Gen3"){
+        PokemonImages = PokemonGen3;
+    }
+
+
+    for (; PokemonImages.length > 0;) {
+        let randomPokemonImage = Math.floor(Math.random() * PokemonImages.length);
+        ShuffledPokemonImages.push(PokemonImages[randomPokemonImage])
+        PokemonImages.splice(randomPokemonImage, 1)
+
+    }
+    PokemonImages = ShuffledPokemonImages;
 
 
     for (let i = 0; i < PokemonImages.length; i++) {
@@ -85,7 +105,7 @@ function cardClicked(idOfClickedCard, PokemonIndex) {
 
 
     if (idOfClickedCard != firstCardRevealed && CardRevealed != 2) {
-        document.getElementById(idOfClickedCard).src = PokemonImages[PokemonIndex];
+        document.getElementById(idOfClickedCard).src = "../Memory-Game/Images/Gens/" + PokemonImages[PokemonIndex];
         CardRevealed++;
         if (CardRevealed == 1) firstCardRevealed = idOfClickedCard;
 
@@ -114,7 +134,7 @@ function cardClicked(idOfClickedCard, PokemonIndex) {
 
 
             lifes--;
-            document.getElementById("lifesId").innerHTML = "Lives left: " + lifes;
+            document.getElementById("lifeshtmlId").innerHTML = lifesHTML + lifes;
 
             setTimeout(function () {
                 putAllImageBack();   //Q try to change this
@@ -144,23 +164,46 @@ function putAllImageBack() {
 
 function easymode() {
     modevalue = "Easy";
-    Start();
+    genmodeclear();
 }
 
 function mediummode() {
     modevalue = "Medium";
-    Start();
+    genmodeclear();
 }
 
 function hardmode() {
     modevalue = "Hard";
+    genmodeclear();
+}
+
+//gen choosing
+
+//let genHTMLtext = ;
+//let gendivimg = '<div id="gendivimg"> </div>'
+let gen1HTML = '<img onclick="gen1mode();" id="gen1" src="../Memory-Game/Images/Gen%20images/gen1.jpg"></img>';
+let gen2HTML = '<img onclick="gen2mode();" id="gen2" src="../Memory-Game/Images/Gen%20images/gen2.jpg"></img>';
+let gen3HTML = '<img onclick="gen3mode();" id="gen3" src="../Memory-Game/Images/Gen%20images/gen3.jpg"></img>';
+
+function genmodeclear() {
+    document.body.innerHTML = " ";
+    document.body.innerHTML += gen1HTML;
+    document.body.innerHTML += gen2HTML;
+    document.body.innerHTML += gen3HTML;
+}
+
+function gen1mode() {
+    genmode = "Gen1";
     Start();
 }
 
+function gen2mode() {
+    genmode = "Gen2";
+    Start();
 
+}
 
-//StartScreen.html
-
-function StartGame() {
-    window.location.href = 'memory.html'; 
+function gen3mode() {
+    genmode = "Gen3";
+    Start();
 }

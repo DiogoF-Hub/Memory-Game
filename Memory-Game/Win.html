@@ -9,19 +9,17 @@
     <!--<link rel='stylesheet' type='text/css' media='screen' href='main.css'>-->
     <script>
         function ReStart() {
-            window.location.href = 'StartScreen.html';
+            window.location.href = 'START.html';
         }
-
     </script>
 
     <style>
         .color {
-
             display: flex;
             position: relative;
             align-items: center;
             flex-direction: column;
-            top: 790px;
+            top: 550px;
         }
 
         #span {
@@ -33,20 +31,34 @@
             background-image: url("../Memory-Game/Images/Wallpapers/win_wallpaper.png");
             background-repeat: no-repeat;
             background-size: 100%;
-
         }
 
         #hidden {
             display: none;
         }
 
+        @font-face {
+            font-family: myFirstFont;
+            src: url(Poke.ttf);
+        }
+
+        #fontfont {
+            color: yellow;
+            background-color: blue;
+            font-size: 3em;
+        }
+
+        * {
+            font-family: myFirstFont;
+        }
 
     </style>
 </head>
 
 <body>
     <div class="color">
-        <h1><Span id="span">Well Played!!!</Span></h1>
+        <img src="https://fontmeme.com/permalink/210605/c4996f158a529f4e43763bcb93018847.png" alt="pokemon-font">
+        <br>
         <button onclick="ReStart();">Restart</button>
     </div>
     <audio id="hidden" control loop autoplay src="../Memory-Game/Audio/Pokemon_win.mp3">
