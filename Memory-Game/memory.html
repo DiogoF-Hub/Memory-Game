@@ -4,7 +4,7 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Memory Card Game (Pokémon Edition)</title>
+    <title>Memory Card Game (PokÃ©mon Edition)</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <!--<link rel='stylesheet' type='text/css' media='screen' href='main.css'>-->
     <script src='memory.js'></script>
@@ -18,8 +18,8 @@
 
         .oneCard {
             display: inline-block;
-            width: 200px;
-            height: 300px;
+            width: 150px;
+            height: 250px;
         }
 
         body {
@@ -37,66 +37,62 @@
         }
 
         .overlay {
-        transform: translate(0,25%);
-        position: relative;
-        text-align: center;
-        color: white;
-    }
+            transform: translate(0, 25%);
+            position: relative;
+            text-align: center;
+            color: white;
+        }
 
-    div {
-        margin: 0%;
-        text-align: center;
-    }
+        div {
+            
+            margin: 0%;
+            text-align: center;
+        }
 
-    #Easy {
-        width: 105px;
-        height: 318px;
-        padding: 10px;
-    }
+        .imgsize {
+            width: 105px;
+            height: 318px;
+            padding: 10px;
+        }
 
-    #Medium {
-        width: 105px;
-        height: 318px;
-        padding: 10px;
-    }
 
-    #Hard {
-        width: 105px;
-        height: 318px;
-        padding: 10px;
-    }
+        .hoverr:hover {
+            transform: scale(1.3);
+        }
 
-    .hoverr:hover {
-        transform: scale(1.3);
-    }
+        @font-face {
+            font-family: myFirstFont;
+            src: url(Poke.ttf);
+        }
 
-    @font-face {
-        font-family: myFirstFont;
-        src: url(Poke.ttf);
-    }
+        #fontfont {
+            font-family: myFirstFont;
+            src: url(Poke.ttf);
+            font-size: 3em;
+        }
 
-    #fontfont {
-        color: yellow;
-        background-color: blue;
-        font-size: 3em;
-    }
+        #spancolor {
+            background-color: blue;
+            color: yellow;
+        }
 
-    * {
-        font-family: myFirstFont;
-    }
-
+        * {
+            font-family: myFirstFont;
+        }
     </style>
 </head>
 
 <body>
 
     <div class="overlay"><img id="poki" src="https://fontmeme.com/permalink/210605/c24cdead459c4f6457ab05f66c466fea.png"
-            alt="pokemon-font"></div>
-    <div class="overlay">
+            alt="pokemon-font">
+    </div>
 
-        <img onclick="easymode();" class="hoverr" id="Easy" src="../Memory-Game/Images/Level images/EasyDiff.jpg">
-        <img onclick="mediummode();" class="hoverr" id="Medium" src="../Memory-Game/Images/Level images/MediumDiff.jpg">
-        <img onclick="hardmode();" class="hoverr" id="Hard" src="../Memory-Game/Images/Level images/HardDiff.jpg">
+    <div class="overlay">
+        <img onclick="easymode();" class="hoverr" class="imgsize" src="../Memory-Game/Images/Level images/EasyDiff.jpg">
+        <img onclick="mediummode();" class="hoverr" class="imgsize"
+        src="../Memory-Game/Images/Level images/MediumDiff.jpg">
+        <img onclick="hardmode();" class="hoverr" class="imgsize" src="../Memory-Game/Images/Level images/HardDiff.jpg">
     </div>
 
 </body>

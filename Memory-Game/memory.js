@@ -7,7 +7,7 @@ let PokemonImages = [];
 
 let PokemonGen1 = ["Bulbasaur.png", "Caterpie.png", "Charmeleon.png", "Gengar.png", "Ghost.png", "Gyarados.png", "Magikarp.png", "Mewtwo.png", "Nidoking.png", "Onix.png", "Pidgeot.png", "Pikachu.png", "Shiggy.png", "Weezing.png", "Zapdos.png", "Bulbasaur.png", "Caterpie.png", "Charmeleon.png", "Gengar.png", "Ghost.png", "Gyarados.png", "Magikarp.png", "Mewtwo.png", "Nidoking.png", "Onix.png", "Pidgeot.png", "Pikachu.png", "Shiggy.png", "Weezing.png", "Zapdos.png"];
 let PokemonGen2 = ["Azumarill.png", "Chikorita.png", "Espeon.png", "Granbull.png", "Hooh.png", "Kingdra.png", "Lugia.png", "Mantine.png", "Miltank.png", "Porygon2.png", "Slugma.png", "Steelix.png", "Tryanitar.png", "Typhlosion.png", "Wobbuffet.png", "Azumarill.png", "Chikorita.png", "Espeon.png", "Granbull.png", "Hooh.png", "Kingdra.png", "Lugia.png", "Mantine.png", "Miltank.png", "Porygon2.png", "Slugma.png", "Steelix.png", "Tryanitar.png", "Typhlosion.png", "Wobbuffet.png"];
-let PokemonGen3 = ["Absol.png", "Blaziken.png", "Gardevoir.png", "Groudon.png", "Kyogre.png", "Lunatone.png", "Mawile.png", "Metagross.png", "Minun.png", "Plusle.png", "Regice.png", "Regice.png", "Reptain.png", "Sableye.png", "Sharpedo.png", "Swellow.png", "Absol.png", "Blaziken.png", "Gardevoir.png", "Groudon.png", "Kyogre.png", "Lunatone.png", "Mawile.png", "Metagross.png", "Minun.png", "Plusle.png", "Regice.png", "Regice.png", "Reptain.png", "Sableye.png", "Sharpedo.png", "Swellow.png"];
+let PokemonGen3 = ["Absol.png", "Blaziken.png", "Gardevoir.png", "Groudon.png", "Kyogre.png", "Lunatone.png", "Mawile.png", "Metagross.png", "Minun.png", "Plusle.png", "Regice.png", "Reptain.png", "Sableye.png", "Sharpedo.png", "Swellow.png", "Absol.png", "Blaziken.png", "Gardevoir.png", "Groudon.png", "Kyogre.png", "Lunatone.png", "Mawile.png", "Metagross.png", "Minun.png", "Plusle.png", "Regice.png", "Regice.png", "Reptain.png", "Sableye.png", "Sharpedo.png", "Swellow.png"];
 
 let ShuffledPokemonImages = [];
 
@@ -64,8 +64,8 @@ function Start() {
         lifes = 10;
     }
 
-    document.getElementById("lifeshtmlId").innerHTML += lifes;
-    document.getElementById("modehtmlId").innerHTML += modevalue;
+    document.getElementById("lifeshtmlId").innerHTML = lifesHTML + '<div id="fontfont"><span id="spancolor">'+lifes+'</span></div>';
+    document.getElementById("modehtmlId").innerHTML += modevalueimg;
 
 
     if(genmode == "Gen1"){
@@ -134,7 +134,8 @@ function cardClicked(idOfClickedCard, PokemonIndex) {
 
 
             lifes--;
-            document.getElementById("lifeshtmlId").innerHTML = lifesHTML + lifes;
+            document.getElementById("lifeshtmlId").innerHTML = lifesHTML + '<div id="fontfont"><span id="spancolor">'+lifes+'</span></div>';
+            
 
             setTimeout(function () {
                 putAllImageBack();   //Q try to change this
@@ -161,35 +162,37 @@ function putAllImageBack() {
     }
 }
 
-
 function easymode() {
     modevalue = "Easy";
+    modevalueimg = '<img src="https://fontmeme.com/permalink/210605/ee68af9491eba2ff5c2c1921b9e0d6af.png" alt="pokemon-font">';
     genmodeclear();
 }
 
 function mediummode() {
     modevalue = "Medium";
+    modevalueimg = '<img src="https://fontmeme.com/permalink/210605/3be8f2bfdf00e75a26210145bc240ef4.png" alt="pokemon-font" >';
     genmodeclear();
 }
 
 function hardmode() {
     modevalue = "Hard";
+    modevalueimg = '<img src="https://fontmeme.com/permalink/210605/80739bc7959011c57f8f5bdf9371a6db.png" alt="pokemon-font">';
     genmodeclear();
 }
 
 //gen choosing
-
-//let genHTMLtext = ;
-//let gendivimg = '<div id="gendivimg"> </div>'
-let gen1HTML = '<img onclick="gen1mode();" id="gen1" src="../Memory-Game/Images/Gen%20images/gen1.jpg"></img>';
-let gen2HTML = '<img onclick="gen2mode();" id="gen2" src="../Memory-Game/Images/Gen%20images/gen2.jpg"></img>';
-let gen3HTML = '<img onclick="gen3mode();" id="gen3" src="../Memory-Game/Images/Gen%20images/gen3.jpg"></img>';
+let ChooseGen = '<img src="https://fontmeme.com/permalink/210606/c014f9db31f12e7615757b4b332677d4.png" alt="pokemon-font">'
+let gen1HTML = '<img onclick="gen1mode();" class="imgsize hoverr" id="gen1" src="../Memory-Game/Images/Gen%20images/gen1.jpg"></img>';
+let gen2HTML = '<img onclick="gen2mode();" class="imgsize hoverr" id="gen2" src="../Memory-Game/Images/Gen%20images/gen2.jpg"></img>';
+let gen3HTML = '<img onclick="gen3mode();" class="imgsize hoverr" id="gen3" src="../Memory-Game/Images/Gen%20images/gen3.jpg"></img>';
 
 function genmodeclear() {
     document.body.innerHTML = " ";
-    document.body.innerHTML += gen1HTML;
-    document.body.innerHTML += gen2HTML;
-    document.body.innerHTML += gen3HTML;
+    document.body.innerHTML += '<div class="overlay">'+ChooseGen+'</div>'; 
+    document.body.innerHTML += '<div class="overlay" id="divimg"></div>';
+    document.getElementById("divimg").innerHTML += gen1HTML;
+    document.getElementById("divimg").innerHTML += gen2HTML;
+    document.getElementById("divimg").innerHTML += gen3HTML;
 }
 
 function gen1mode() {
