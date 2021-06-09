@@ -7,11 +7,6 @@
     <title>Learn</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script>
-        function Goback() {
-            window.location.href = 'START.html';
-        }
-    </script>
     <style>
         body {
             background-image: url("../Memory-Game/Images/Wallpapers/wallpaper_game.png");
@@ -37,20 +32,6 @@
             display: none;
         }
 
-        #CenterButton {
-            margin: 0;
-            position: absolute;
-            top: 95%;
-            left: 50%;
-            -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-        }
-
-        .moveButtonDown {
-            top: 200px;
-        }
-
-
         .block {
             display: block;
         }
@@ -70,18 +51,65 @@
             font-family: myFirstFont;
         }
 
-        #hidden{
+        #hidden {
             display: none;
+        }
+
+        .content {
+            margin-top: 5%;
+            width: 90%;
+            text-align: end;
+        }
+
+        .content a {
+            transition: 0.14s;
+        }
+
+        .content h1 {
+            font-family: myFirstFont;
+            src: url(Poke.ttf);
+            color: yellow;
+            font-size: 500%;
+            text-shadow: 10px 10px 3px blue, 0 0 5px blue;
+        }
+
+
+
+
+        .content .btn {
+            text-shadow: 0px 0px 3px blue, 0 0 5px blue;
+            font-family: myFirstFont;
+            src: url(Poke.ttf);
+            border-radius: 9px;
+            color: gold;
+            text-decoration: none;
+            border: 3px solid;
+            padding: 7px 13px;
+            font-weight: bold;
+            background-color: rgba(7, 52, 250, 0.644);
+        }
+
+        .content .btn:hover {
+            color: rgb(255, 157, 0);
+        }
+
+        .outer {
+            display: table;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
         }
     </style>
 </head>
 
 <body onload="load();">
     <div id="centerText">
-        <img class="block" src="https://fontmeme.com/permalink/210606/dae750b3d2ac29373ebee2281a6a1d88.png"
+        <img class="block" src="https://fontmeme.com/permalink/210609/9fecb7ec4a99f26920f65129660d5948.png"
             alt="pokemon-font">
         <br>
-        <img class="block" src="https://fontmeme.com/permalink/210606/6b99bb981c9c87770097bad7f9e5ad90.png" 
+        <img class="block" src="https://fontmeme.com/permalink/210609/c56c37b2edaf32148ffe29dcad7204d2.png" 
             alt="pokemon-font">
         <br>
         <img class="overlay" src="https://fontmeme.com/permalink/210605/19bd79cee880aa19c49e7bfab381e5d7.png"
@@ -90,7 +118,7 @@
         <img clas="overlay" src="https://fontmeme.com/permalink/210606/16b366dbf769b509e99ac173f62e5f8b.png"
             alt="pokemon-font">
         <br>
-        <img class="overlay" src="https://fontmeme.com/permalink/210606/746900779a061e7ae96c7d03d444655c.png" 
+        <img class="overlay" src="https://fontmeme.com/permalink/210606/746900779a061e7ae96c7d03d444655c.png"
             alt="pokemon-font">
         <br>
         <img class="overlay" src="https://fontmeme.com/permalink/210606/779856f92ec4d34aa2886ae7b84579c3.png"
@@ -102,8 +130,14 @@
             <img class="overlay" src="https://fontmeme.com/permalink/210605/93d4ebd954b6552bd4af0ed2050480fb.png"
                 alt="pokemon-font">
         </div>
-        <button id="CenterButton" onclick="Goback();">Go Back</button>
     </div>
+
+    <div class="outer">
+        <div class="content">
+            <a class="btn" href="START.html">Go Back</a>
+        </div>
+    </div>
+
 
     <audio id="hidden" control loop autoplay src="../Memory-Game/Audio/PokemonLearn.mp3"></audio>
 </body>

@@ -7,11 +7,6 @@
     <title>Win</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <!--<link rel='stylesheet' type='text/css' media='screen' href='main.css'>-->
-    <script>
-        function ReStart() {
-            window.location.href = 'START.html';
-        }
-    </script>
 
     <style>
         .color {
@@ -20,11 +15,6 @@
             align-items: center;
             flex-direction: column;
             top: 550px;
-        }
-
-        #span {
-            background-color: blue;
-            color: yellow;
         }
 
         body {
@@ -52,16 +42,65 @@
             font-family: myFirstFont;
         }
 
+        .content {
+            width: 50%;
+            padding-top: 10%;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .content a {
+            transition: 0.14s;
+        }
+
+        .content h1 {
+            font-family: myFirstFont;
+            src: url(Poke.ttf);
+            color: yellow;
+            font-size: 500%;
+            text-shadow: 10px 10px 3px blue, 0 0 5px blue;
+        }
+
+        .content .btn {
+            text-shadow: 0px 0px 3px blue, 0 0 5px blue;
+            font-family: myFirstFont;
+            src: url(Poke.ttf);
+            border-radius: 9px;
+            color: gold;
+            text-decoration: none;
+            border: 3px solid;
+            padding: 7px 13px;
+            font-weight: bold;
+            background-color: rgba(7, 52, 250, 0.644);
+        }
+
+        .content .btn:hover {
+            color: rgb(255, 157, 0);
+        }
+
+        .outer {
+            display: table;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+        }
     </style>
 </head>
 
 <body>
     <div class="color">
-        <img id="winimg" src="https://fontmeme.com/permalink/210606/2933cd16e943f55584617f8511aae7fa.png" alt="pokemon-font">
+        <img src="https://fontmeme.com/permalink/210606/2933cd16e943f55584617f8511aae7fa.png" alt="pokemon-font">
         <br>
-        <button onclick="ReStart();">Restart</button>
+        <div class="outer">
+            <div class="content">
+                <a class="btn" href="START.html">Restart</a>
+            </div>
+        </div>
     </div>
-    <audio id="hidden" control loop autoplay src="../Memory-Game/Audio/Pokemon_win.mp3"></audio>
+    <audio id="hidden" control loop autoplay src="../Memory-Game/Audio/Pokemon_win.mp3">
 </body>
 
 </html>
