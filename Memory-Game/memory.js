@@ -37,12 +37,12 @@ function Start() {
     var PlayTheme = new Audio('../Memory-Game/Audio/PokemonGameTheme.mp3');
     var EastereggTheme = new Audio('../Memory-Game/Audio/Numa_Numa_yay.mp3');
 
-    if(peppa == 0){
+    if (peppa == 0) {
         PlayTheme.play();
     } else {
         EastereggTheme.play();
     }
-    
+
 
     //modevalue = document.getElementById("ModeDifficultySelect").value;
 
@@ -52,31 +52,31 @@ function Start() {
     document.body.innerHTML += gamediv;
 
 
-    if(modevalue == "Easy"){
+    if (modevalue == "Easy") {
         lifes = 35;
     }
 
-    if(modevalue == "Medium"){
+    if (modevalue == "Medium") {
         lifes = 20;
     }
 
-    if(modevalue == "Hard"){
+    if (modevalue == "Hard") {
         lifes = 10;
     }
 
-    document.getElementById("lifeshtmlId").innerHTML = lifesHTML + '<div id="fontfont"><span id="spancolor">'+lifes+'</span></div>';
+    document.getElementById("lifeshtmlId").innerHTML = lifesHTML + '<div id="fontfont"><span id="spancolor">' + lifes + '</span></div>';
     document.getElementById("modehtmlId").innerHTML += modevalueimg;
 
 
-    if(genmode == "Gen1"){
+    if (genmode == "Gen1") {
         PokemonImages = PokemonGen1;
     }
 
-    if(genmode == "Gen2"){
+    if (genmode == "Gen2") {
         PokemonImages = PokemonGen2;
     }
 
-    if(genmode == "Gen3"){
+    if (genmode == "Gen3") {
         PokemonImages = PokemonGen3;
     }
 
@@ -87,7 +87,7 @@ function Start() {
 
     }
     PokemonImages = ShuffledPokemonImages;
- 
+
 
     for (let i = 0; i < PokemonImages.length; i++) {
         let newImage = document.createElement("img");
@@ -102,46 +102,46 @@ function Start() {
 
 function cardClicked(idOfClickedCard, PokemonIndex) {
 
+    if (arrayOfCardIds.includes(idOfClickedCard)) {
+        if (idOfClickedCard != firstCardRevealed && CardRevealed != 2) {
+            document.getElementById(idOfClickedCard).src = "../Memory-Game/Images/Gens/" + PokemonImages[PokemonIndex];
+            CardRevealed++;
+            if (CardRevealed == 1) firstCardRevealed = idOfClickedCard;
 
-    if (idOfClickedCard != firstCardRevealed && CardRevealed != 2) {
-        document.getElementById(idOfClickedCard).src = "../Memory-Game/Images/Gens/" + PokemonImages[PokemonIndex];
-        CardRevealed++;
-        if (CardRevealed == 1) firstCardRevealed = idOfClickedCard;
+            var cardClickedAudio = new Audio('../Memory-Game/Audio/Pokemon_(A_Button).mp3');
+            cardClickedAudio.play();
 
-        var cardClickedAudio = new Audio('../Memory-Game/Audio/Pokemon_(A_Button).mp3');
-        cardClickedAudio.play();
+            if (CardRevealed == 2) {
+                let imageNameOffFirstCard = document.getElementById(firstCardRevealed).src;
+                let imagesNameOffSecondCard = document.getElementById(idOfClickedCard).src;
+                if (imageNameOffFirstCard == imagesNameOffSecondCard) {
+                    for (let i = 0; i < arrayOfCardIds.length; i++) {
+                        if (arrayOfCardIds[i] == firstCardRevealed) {
+                            arrayOfCardIds.splice(i, 1)
+                            i--;
+                        }
 
-        if (CardRevealed == 2) {
-            let imageNameOffFirstCard = document.getElementById(firstCardRevealed).src;
-            let imagesNameOffSecondCard = document.getElementById(idOfClickedCard).src;
-            if (imageNameOffFirstCard == imagesNameOffSecondCard) {
-                for (let i = 0; i < arrayOfCardIds.length; i++) {
-                    if (arrayOfCardIds[i] == firstCardRevealed) {
-                        arrayOfCardIds.splice(i, 1)
-                        i--;
+                        if (arrayOfCardIds[i] == idOfClickedCard) {
+                            arrayOfCardIds.splice(i, 1)
+                            i--;
+                        }
                     }
 
-                    if (arrayOfCardIds[i] == idOfClickedCard) {
-                        arrayOfCardIds.splice(i, 1)
-                        i--;
-                    }
+
+                    lifes++;
                 }
 
 
-                lifes++;
+                lifes--;
+                document.getElementById("lifeshtmlId").innerHTML = lifesHTML + '<div id="fontfont"><span id="spancolor">' + lifes + '</span></div>';
+
+
+                setTimeout(function () {
+                    putAllImageBack();   //Q try to change this
+                }, 1000);
             }
-
-
-            lifes--;
-            document.getElementById("lifeshtmlId").innerHTML = lifesHTML + '<div id="fontfont"><span id="spancolor">'+lifes+'</span></div>';
-            
-
-            setTimeout(function () {
-                putAllImageBack();   //Q try to change this
-            }, 1000);
         }
     }
-
 }
 
 function putAllImageBack() {
@@ -161,51 +161,32 @@ function putAllImageBack() {
     }
 }
 
-function easymode() {
-    modevalue = "Easy";
-    modevalueimg = '<img src="https://fontmeme.com/permalink/210605/ee68af9491eba2ff5c2c1921b9e0d6af.png" alt="pokemon-font">';
-    genmodeclear();
-}
+function setGameMode(mode) {
+    if (mode == "Easy") modevalueimg = '<img src="https://fontmeme.com/permalink/210605/ee68af9491eba2ff5c2c1921b9e0d6af.png" alt="pokemon-font">';
 
-function mediummode() {
-    modevalue = "Medium";
-    modevalueimg = '<img src="https://fontmeme.com/permalink/210605/3be8f2bfdf00e75a26210145bc240ef4.png" alt="pokemon-font" >';
-    genmodeclear();
-}
+    if (mode == "Medium") modevalueimg = '<img src="https://fontmeme.com/permalink/210605/3be8f2bfdf00e75a26210145bc240ef4.png" alt="pokemon-font" >';
 
-function hardmode() {
-    modevalue = "Hard";
-    modevalueimg = '<img src="https://fontmeme.com/permalink/210605/80739bc7959011c57f8f5bdf9371a6db.png" alt="pokemon-font">';
+    if (mode == "Hard") modevalueimg = '<img src="https://fontmeme.com/permalink/210605/80739bc7959011c57f8f5bdf9371a6db.png" alt="pokemon-font">';
+    modevalue = mode;
     genmodeclear();
 }
 
 //gen choosing
-let ChooseGen = '<img src="https://fontmeme.com/permalink/210606/c014f9db31f12e7615757b4b332677d4.png" alt="pokemon-font">'
-let gen1HTML = '<img onclick="gen1mode();" class="imgsize hoverr" id="gen1" src="../Memory-Game/Images/Gen%20images/gen1.jpg"></img>';
-let gen2HTML = '<img onclick="gen2mode();" class="imgsize hoverr" id="gen2" src="../Memory-Game/Images/Gen%20images/gen2.jpg"></img>';
-let gen3HTML = '<img onclick="gen3mode();" class="imgsize hoverr" id="gen3" src="../Memory-Game/Images/Gen%20images/gen3.jpg"></img>';
+let ChooseGenimg = '<img src="https://fontmeme.com/permalink/210606/c014f9db31f12e7615757b4b332677d4.png" alt="pokemon-font">'
+let gen1HTML = '<img onclick="genchoose("Gen1");" class="imgsize hoverr" src="../Memory-Game/Images/Gen%20images/gen1.jpg"></img>';
+let gen2HTML = '<img onclick="genchoose("Gen2");" class="imgsize hoverr" src="../Memory-Game/Images/Gen%20images/gen2.jpg"></img>';
+let gen3HTML = '<img onclick="genchoose("Gen3");" class="imgsize hoverr" src="../Memory-Game/Images/Gen%20images/gen3.jpg"></img>';
 
 function genmodeclear() {
     document.body.innerHTML = " ";
-    document.body.innerHTML += '<div class="overlay">'+ChooseGen+'</div>'; 
+    document.body.innerHTML += '<div class="overlay">' + ChooseGenimg + '</div>';
     document.body.innerHTML += '<div class="overlay" id="divimg"></div>';
     document.getElementById("divimg").innerHTML += gen1HTML;
     document.getElementById("divimg").innerHTML += gen2HTML;
     document.getElementById("divimg").innerHTML += gen3HTML;
 }
 
-function gen1mode() {
-    genmode = "Gen1";
-    Start();
-}
-
-function gen2mode() {
-    genmode = "Gen2";
-    Start();
-
-}
-
-function gen3mode() {
-    genmode = "Gen3";
+function genchoose(whatgen) {
+    genmode = whatgen;
     Start();
 }
