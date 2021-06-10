@@ -24,7 +24,7 @@ let MediumMode = "Medium";
 let HardMode = "Hard";
 
 let modevalue = "Hard";
-let genmode = "Gen1";
+let genmode = 1;
 
 //game started html
 let lifesHTML = '<div id="lifeshtmlId"><img id="lifesimg" src="https://fontmeme.com/permalink/210605/3cc35532ed01e7cd47cdc80d5367feb7.png" alt="pokemon-font"></div>'
@@ -68,15 +68,15 @@ function Start() {
     document.getElementById("modehtmlId").innerHTML += modevalueimg;
 
 
-    if (genmode == "Gen1") {
+    if (genmode == 1) {
         PokemonImages = PokemonGen1;
     }
 
-    if (genmode == "Gen2") {
+    if (genmode == 2) {
         PokemonImages = PokemonGen2;
     }
 
-    if (genmode == "Gen3") {
+    if (genmode == 3) {
         PokemonImages = PokemonGen3;
     }
 
@@ -173,9 +173,9 @@ function setGameMode(mode) {
 
 //gen choosing
 let ChooseGenimg = '<img src="https://fontmeme.com/permalink/210606/c014f9db31f12e7615757b4b332677d4.png" alt="pokemon-font">'
-let gen1HTML = '<img onclick="genchoose("Gen1");" class="imgsize hoverr" src="../Memory-Game/Images/Gen%20images/gen1.jpg"></img>';
-let gen2HTML = '<img onclick="genchoose("Gen2");" class="imgsize hoverr" src="../Memory-Game/Images/Gen%20images/gen2.jpg"></img>';
-let gen3HTML = '<img onclick="genchoose("Gen3");" class="imgsize hoverr" src="../Memory-Game/Images/Gen%20images/gen3.jpg"></img>';
+let gen1HTML = '<img onclick="genchoose(1);" class="imgsize hoverr" src="../Memory-Game/Images/Gen%20images/gen1.jpg"></img>';
+let gen2HTML = '<img onclick="genchoose(2);" class="imgsize hoverr" src="../Memory-Game/Images/Gen%20images/gen2.jpg"></img>';
+let gen3HTML = '<img onclick="genchoose(3);" class="imgsize hoverr" src="../Memory-Game/Images/Gen%20images/gen3.jpg"></img>';
 
 function genmodeclear() {
     document.body.innerHTML = " ";
