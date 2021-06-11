@@ -120,14 +120,20 @@ let HardMode = "Hard";
 let modevalue = "Hard";
 let genmode = 1;
 
+let minute = 5;
+let sec = 00;
+
+let secArray = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"];
+let secIndex = 59;
+
+let timermode = '1:00';
+
 //game started html
-let lifesHTML =
-  '<div id="lifeshtmlId"><img id="lifesimg" src="https://fontmeme.com/permalink/210605/3cc35532ed01e7cd47cdc80d5367feb7.png" alt="pokemon-font"></div>';
-let modeHTML =
-  '<div id="modehtmlId"><img id="modeimg" src="https://fontmeme.com/permalink/210605/84d210e951f3f215a5acbd5a523dd731.png" alt="pokemon-font"></div>';
+let lifesHTML = '<div id="lifeshtmlId"><img id="lifesimg" src="https://fontmeme.com/permalink/210605/3cc35532ed01e7cd47cdc80d5367feb7.png" alt="pokemon-font"></div>';
+let modeHTML = '<div id="modehtmlId"><img id="modeimg" src="https://fontmeme.com/permalink/210605/84d210e951f3f215a5acbd5a523dd731.png" alt="pokemon-font"></div>';
 let gamediv = '<div id="myGame" class="allCards"></div>';
-let buttonshowcard =
-  '<button onclick="showallcards();">Show all Cards</button>';
+let buttonshowcard = '<button onclick="showallcards();">Show all Cards</button>';
+
 
 let peppa = 0;
 
@@ -141,25 +147,36 @@ function Start() {
     EastereggTheme.play();
   }
 
-  //modevalue = document.getElementById("ModeDifficultySelect").value;
+
+  if (modevalue == "Easy") {
+    lifes = 35;
+    timermode = '5:00';
+    minute = 5;
+    secIndex = 00;
+  }
+
+  if (modevalue == "Medium") {
+    lifes = 20;
+    timermode = '3:00';
+    minute = 3;
+    secIndex = 00;
+  }
+
+  if (modevalue == "Hard") {
+    lifes = 10;
+    timermode = '1:00';
+    minute = 1;
+    secIndex = 00;
+  }
+
+  let timerHTML = '<div>Time Left: <span id="timerSpan">' + timermode + '</span></div>';
 
   document.body.innerHTML = " ";
   document.body.innerHTML += lifesHTML;
   document.body.innerHTML += modeHTML;
   document.body.innerHTML += gamediv;
   document.body.innerHTML += buttonshowcard;
-
-  if (modevalue == "Easy") {
-    lifes = 35;
-  }
-
-  if (modevalue == "Medium") {
-    lifes = 20;
-  }
-
-  if (modevalue == "Hard") {
-    lifes = 10;
-  }
+  document.body.innerHTML += timerHTML;
 
   document.getElementById("lifeshtmlId").innerHTML =
     lifesHTML +
@@ -191,6 +208,7 @@ function Start() {
     cardsnotmatched.push(all);
   }
 
+
   for (let i = 0; i < PokemonImages.length; i++) {
     let newImage = document.createElement("img");
 
@@ -208,6 +226,7 @@ function Start() {
       cardClicked(newImage.id, i);
     });
   }
+  timer();
 }
 
 function cardClicked(idOfClickedCard, PokemonIndex) {
@@ -334,11 +353,30 @@ function genchoose(whatgen) {
 
 function showallcards() {
   for (let i = 0; i < arrayOfCardIds.length; i++) {
-    document.getElementById(arrayOfCardIds[i]).src =
-      "../Memory-Game/Images/Gens/" + cardsnotmatched[i];
+    document.getElementById(arrayOfCardIds[i]).src = "../Memory-Game/Images/Gens/" + cardsnotmatched[i];
   }
 
   setTimeout(function () {
     putAllImageBack();
   }, 2000);
+}
+
+function timer() {
+  setInterval(function () {
+    sec = secArray[secIndex];
+
+    if (secIndex == 0 && minute == 00) {
+      window.location.href = "GameOver.html";
+    }
+
+    document.getElementById("timerSpan").innerHTML = minute + ":" + sec;
+
+    secIndex--;
+
+    if (secIndex < 0) {
+      minute--;
+      secIndex = 60;
+    }
+
+  }, 1000);
 }
