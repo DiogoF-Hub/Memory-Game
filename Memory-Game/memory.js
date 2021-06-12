@@ -139,7 +139,11 @@ let peppa = 0;
 
 function Start() {
   var PlayTheme = new Audio("../Memory-Game/Audio/PokemonGameTheme.mp3");
+  PlayTheme.loop = true;
+
   var EastereggTheme = new Audio("../Memory-Game/Audio/Numa_Numa_yay.mp3");
+  EastereggTheme.loop = true;
+
 
   if (peppa == 0) {
     PlayTheme.play();
