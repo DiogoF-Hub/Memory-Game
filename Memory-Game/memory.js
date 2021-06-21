@@ -128,6 +128,8 @@ let secIndex = 59;
 
 let timermode = '1:00';
 
+let showallcardsmode = false;
+
 //game started html
 let lifesHTML = '<div id="lifeshtmlId"><img id="lifesimg" src="https://fontmeme.com/permalink/210605/3cc35532ed01e7cd47cdc80d5367feb7.png" alt="pokemon-font"></div>';
 let modeHTML = '<div id="modehtmlId"><img id="modeimg" src="https://fontmeme.com/permalink/210605/84d210e951f3f215a5acbd5a523dd731.png" alt="pokemon-font"></div>';
@@ -234,56 +236,60 @@ function Start() {
 }
 
 function cardClicked(idOfClickedCard, PokemonIndex) {
-  if (arrayOfCardIds.includes(idOfClickedCard)) {
-    if (idOfClickedCard != firstCardRevealed && CardRevealed != 2) {
-      document.getElementById(idOfClickedCard).src =
-        "../Memory-Game/Images/Gens/" + PokemonImages[PokemonIndex];
-      CardRevealed++;
-      if (CardRevealed == 1) firstCardRevealed = idOfClickedCard;
+  if (showallcardsmode == true) {
+    alert("Wait until all cards are back");
+  } else {
+    if (arrayOfCardIds.includes(idOfClickedCard)) {
+      if (idOfClickedCard != firstCardRevealed && CardRevealed != 2) {
+        document.getElementById(idOfClickedCard).src =
+          "../Memory-Game/Images/Gens/" + PokemonImages[PokemonIndex];
+        CardRevealed++;
+        if (CardRevealed == 1) firstCardRevealed = idOfClickedCard;
 
-      var cardClickedAudio = new Audio(
-        "../Memory-Game/Audio/Pokemon_(A_Button).mp3"
-      );
-      //var cardClickedAudioEasteregg = new Audio('');
-      if (peppa == 0) {
-        cardClickedAudio.play();
-      } else {
-        //cardClickedAudioEasteregg.play();         //Durbaca audio Easteregg
-      }
-
-      if (CardRevealed == 2) {
-        let imageNameOffFirstCard =
-          document.getElementById(firstCardRevealed).src;
-        let imagesNameOffSecondCard =
-          document.getElementById(idOfClickedCard).src;
-        if (imageNameOffFirstCard == imagesNameOffSecondCard) {
-          for (let i = 0; i < arrayOfCardIds.length; i++) {
-            if (arrayOfCardIds[i] == firstCardRevealed) {
-              arrayOfCardIds.splice(i, 1);
-              cardsnotmatched.splice(i, 1);
-              i--;
-            }
-
-            if (arrayOfCardIds[i] == idOfClickedCard) {
-              arrayOfCardIds.splice(i, 1);
-              cardsnotmatched.splice(i, 1);
-              i--;
-            }
-          }
-
-          lifes++;
+        var cardClickedAudio = new Audio(
+          "../Memory-Game/Audio/Pokemon_(A_Button).mp3"
+        );
+        //var cardClickedAudioEasteregg = new Audio('');
+        if (peppa == 0) {
+          cardClickedAudio.play();
+        } else {
+          //cardClickedAudioEasteregg.play();         //Durbaca audio Easteregg
         }
 
-        lifes--;
-        document.getElementById("lifeshtmlId").innerHTML =
-          lifesHTML +
-          '<div id="fontfont"><span id="spancolor">' +
-          lifes +
-          "</span></div>";
+        if (CardRevealed == 2) {
+          let imageNameOffFirstCard =
+            document.getElementById(firstCardRevealed).src;
+          let imagesNameOffSecondCard =
+            document.getElementById(idOfClickedCard).src;
+          if (imageNameOffFirstCard == imagesNameOffSecondCard) {
+            for (let i = 0; i < arrayOfCardIds.length; i++) {
+              if (arrayOfCardIds[i] == firstCardRevealed) {
+                arrayOfCardIds.splice(i, 1);
+                cardsnotmatched.splice(i, 1);
+                i--;
+              }
 
-        setTimeout(function () {
-          putAllImageBack();
-        }, 1000);
+              if (arrayOfCardIds[i] == idOfClickedCard) {
+                arrayOfCardIds.splice(i, 1);
+                cardsnotmatched.splice(i, 1);
+                i--;
+              }
+            }
+
+            lifes++;
+          }
+
+          lifes--;
+          document.getElementById("lifeshtmlId").innerHTML =
+            lifesHTML +
+            '<div id="fontfont"><span id="spancolor">' +
+            lifes +
+            "</span></div>";
+
+          setTimeout(function () {
+            putAllImageBack();
+          }, 1000);
+        }
       }
     }
   }
@@ -356,12 +362,14 @@ function genchoose(whatgen) {
 }
 
 function showallcards() {
+  showallcardsmode = true;
   for (let i = 0; i < arrayOfCardIds.length; i++) {
     document.getElementById(arrayOfCardIds[i]).src = "../Memory-Game/Images/Gens/" + cardsnotmatched[i];
   }
 
   setTimeout(function () {
     putAllImageBack();
+    showallcardsmode = false;
   }, 2000);
 }
 
