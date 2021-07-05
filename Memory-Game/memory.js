@@ -111,6 +111,7 @@ let firstCardRevealed = 0;
 
 let CardRevealed = 0;
 
+//let lifesimgfile = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "35"]
 let lifes = 0;
 
 let EasyMode = "Easy";
@@ -131,8 +132,7 @@ let timermode = '1:00';
 let showallcardsmode = false;
 
 //game started html
-let lifesHTML = '<div id="lifeshtmlId"><img id="lifesimg" src="https://fontmeme.com/permalink/210605/3cc35532ed01e7cd47cdc80d5367feb7.png" alt="pokemon-font"></div>';
-let modeHTML = '<div id="modehtmlId"><img id="modeimg" src="https://fontmeme.com/permalink/210605/84d210e951f3f215a5acbd5a523dd731.png" alt="pokemon-font"></div>';
+let modeHTML = '<div id="modehtmlId"></div>';
 let gamediv = '<div id="myGame" class="allCards"></div>';
 let buttonshowcard = '<button onclick="showallcards();">Show all Cards</button>';
 
@@ -175,20 +175,18 @@ function Start() {
     secIndex = 59;
   }
 
-  let timerHTML = '<div>Time Left: <span id="timerSpan">' + timermode + '</span></div>';
+  let timerHTML = '<span id="timercolor"><div>Time Left: <span id="timerSpan">' + timermode + '</span></div></span>';
+  let lifesHTML = '<div id="lifeshtmlId">' + '<img src="../Memory-Game/Images/Lifes%20images/' + lifes + '.png"></div>';
 
   document.body.innerHTML = " ";
   document.body.innerHTML += lifesHTML;
   document.body.innerHTML += modeHTML;
+  document.body.innerHTML += timerHTML;
   document.body.innerHTML += gamediv;
   document.body.innerHTML += buttonshowcard;
-  document.body.innerHTML += timerHTML;
 
-  document.getElementById("lifeshtmlId").innerHTML =
-    lifesHTML +
-    '<div id="fontfont"><span id="spancolor">' +
-    lifes +
-    "</span></div>";
+
+
   document.getElementById("modehtmlId").innerHTML += modevalueimg;
 
   if (genmode == 1) {
@@ -280,11 +278,7 @@ function cardClicked(idOfClickedCard, PokemonIndex) {
           }
 
           lifes--;
-          document.getElementById("lifeshtmlId").innerHTML =
-            lifesHTML +
-            '<div id="fontfont"><span id="spancolor">' +
-            lifes +
-            "</span></div>";
+          document.getElementById("lifeshtmlId").innerHTML = '<img src="../Memory-Game/Images/Lifes%20images/' + lifes + '.png">';
 
           setTimeout(function () {
             putAllImageBack();
@@ -324,15 +318,15 @@ function putAllImageBack() {
 function setGameMode(mode) {
   if (mode == "Easy")
     modevalueimg =
-      '<img src="https://fontmeme.com/permalink/210605/ee68af9491eba2ff5c2c1921b9e0d6af.png" alt="pokemon-font">';
+      '<img src="https://fontmeme.com/permalink/210705/969f591ab2a8e06fa5f1fcd3c867689a.png" alt="pokemon-font">';
 
   if (mode == "Medium")
     modevalueimg =
-      '<img src="https://fontmeme.com/permalink/210605/3be8f2bfdf00e75a26210145bc240ef4.png" alt="pokemon-font" >';
+      '<img src="https://fontmeme.com/permalink/210705/5cabe7bd69d8a2e566f4efe363e3c9ed.png" alt="pokemon-font" >';
 
   if (mode == "Hard")
     modevalueimg =
-      '<img src="https://fontmeme.com/permalink/210605/80739bc7959011c57f8f5bdf9371a6db.png" alt="pokemon-font">';
+      '<img src="https://fontmeme.com/permalink/210705/eb0405c5504fb9d76f8c39efe10ec4fa.png" alt="pokemon-font">';
   modevalue = mode;
   genmodeclear();
 }
