@@ -7,7 +7,12 @@
   <title>Start</title>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <!--<link rel='stylesheet' type='text/css' media='screen' href='LION.css'>-->
-  <!--<script src='memory.js'></script>-->
+  <script>
+    function start() {
+      var audio = document.getElementById("hidden");
+      audio.volume = 0.2;
+    }
+  </script>
   <style>
     * {
       box-sizing: border-box;
@@ -88,7 +93,7 @@
   </style>
 </head>
 
-<body>
+<body onload="start();">
   <div class="outer">
     <div class="content">
       <h1>M E M O R Y - G A M E</h1>

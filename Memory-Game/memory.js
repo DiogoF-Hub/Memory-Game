@@ -148,8 +148,10 @@ function Start() {
 
   if (peppa == 0) {
     PlayTheme.play();
+    PlayTheme.volume = 0.1;
   } else {
     EastereggTheme.play();
+    EastereggTheme.volume = 0.1;
   }
 
 
@@ -247,11 +249,13 @@ function cardClicked(idOfClickedCard, PokemonIndex) {
         var cardClickedAudio = new Audio(
           "../Memory-Game/Audio/Pokemon_(A_Button).mp3"
         );
-        //var cardClickedAudioEasteregg = new Audio('');
+        var cardClickedAudioEasteregg = new Audio('../Memory-Game/Audio/durbaca_a.mp3');
         if (peppa == 0) {
           cardClickedAudio.play();
+          cardClickedAudio.volume = 0.2;
         } else {
-          //cardClickedAudioEasteregg.play();         //Durbaca audio Easteregg
+          cardClickedAudioEasteregg.play();
+          cardClickedAudioEasteregg.volume = 0.1;
         }
 
         if (CardRevealed == 2) {

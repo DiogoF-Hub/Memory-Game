@@ -7,6 +7,12 @@
     <title>Learn</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <!--<link rel='stylesheet' type='text/css' media='screen' href='main.css'>-->
+    <script>
+        function start() {
+            var audio = document.getElementById("hidden");
+            audio.volume = 0.2;
+        }
+    </script>
     <style>
         body {
             background-image: url("../Memory-Game/Images/Wallpapers/wallpaper_game.png");
@@ -101,7 +107,7 @@
     </style>
 </head>
 
-<body>
+<body onload="start();">
     <div id="centerText">
         <img class="block" src="https://fontmeme.com/permalink/210609/9fecb7ec4a99f26920f65129660d5948.png"
             alt="pokemon-font">
