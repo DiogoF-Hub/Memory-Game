@@ -111,7 +111,6 @@ let firstCardRevealed = 0;
 
 let CardRevealed = 0;
 
-//let lifesimgfile = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "35"]
 let lifes = 0;
 
 let EasyMode = "Easy";
@@ -176,7 +175,8 @@ function Start() {
   }
 
   let timerHTML = '<span id="timercolor"><div>Time Left: <span id="timerSpan">' + timermode + '</span></div></span>';
-  let lifesHTML = '<div id="lifeshtmlId">' + '<img src="../Memory-Game/Images/Lifes%20images/' + lifes + '.png"></div>';
+  let lifesHTML = '<div id="lifeshtmlId"><img id="lifesimg" src="../Memory-Game/Images/Lifes%20images/' + lifes + '.png"></div>';
+
 
   document.body.innerHTML = " ";
   document.body.innerHTML += lifesHTML;
@@ -278,7 +278,7 @@ function cardClicked(idOfClickedCard, PokemonIndex) {
           }
 
           lifes--;
-          document.getElementById("lifeshtmlId").innerHTML = '<img src="../Memory-Game/Images/Lifes%20images/' + lifes + '.png">';
+          document.getElementById("lifesimg").src = '../Memory-Game/Images/Lifes%20images/' + lifes + '.png';
 
           setTimeout(function () {
             putAllImageBack();
