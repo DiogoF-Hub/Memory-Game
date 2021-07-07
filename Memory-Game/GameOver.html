@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Game Over</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!--<link rel='stylesheet' type='text/css' media='screen' href='main.css'>-->
+    <script>
+        function start() {
+            var audio = document.getElementById("hidden");
+            audio.volume = 0.1;
+        }
+    </script>
+    <style>
+        .color {
+
+            display: flex;
+            position: relative;
+            align-items: center;
+            flex-direction: column;
+            top: 790px;
+            background-color: black;
+            color: red;
+        }
+
+        body {
+            background-image: url("../Memory-Game/Images/Wallpapers/wallpaper_game_over.png");
+        }
+
+        #hidden {
+            display: none;
+        }
+
+        .content {
+            margin-top: 3%;
+            width: 90%;
+            text-align: end;
+        }
+
+        .content a {
+            transition: 0.14s;
+        }
+
+        .content h1 {
+            font-family: myFirstFont;
+            src: url(Poke.ttf);
+            color: yellow;
+            font-size: 500%;
+            text-shadow: 10px 10px 3px blue, 0 0 5px blue;
+        }
+
+        .content .btn {
+            text-shadow: 0px 0px 3px blue, 0 0 5px blue;
+            font-family: myFirstFont;
+            src: url(Poke.ttf);
+            border-radius: 9px;
+            color: gold;
+            text-decoration: none;
+            border: 3px solid;
+            padding: 7px 13px;
+            font-weight: bold;
+            background-color: rgb(204, 22, 22);
+        }
+
+        .content .btn:hover {
+            color: rgb(255, 157, 0);
+        }
+
+        .outer {
+            display: table;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        @font-face {
+            font-family: myFirstFont;
+            src: url(Poke.ttf);
+        }
+
+        * {
+            font-family: myFirstFont;
+        }
+
+        #normalSize {
+            font-weight: lighter;
+        }
+    </style>
+</head>
+
+<body onload="start();">
+    <div class="color">
+        <h1 id="normalSize">Game Over!!!</h1>
+        <div class="outer">
+            <div class="content">
+                <a class="btn" href="START.html">Restart</a>
+            </div>
+        </div>
+        <audio id="hidden" control loop autoplay src="../Memory-Game/Audio/creepy_sound.mp3">
+</body>
+
+</html>
