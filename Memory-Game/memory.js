@@ -254,7 +254,7 @@ function cardClicked(idOfClickedCard, PokemonIndex) {
         if (peppa == 0) {
           cardClickedAudio.play();
           cardClickedAudio.volume = 0.2;
-        } 
+        }
 
         if (CardRevealed == 2) {
           let imageNameOffFirstCard =
@@ -262,11 +262,11 @@ function cardClicked(idOfClickedCard, PokemonIndex) {
           let imagesNameOffSecondCard =
             document.getElementById(idOfClickedCard).src;
           if (imageNameOffFirstCard == imagesNameOffSecondCard) {
-            if(peppa != 0){
+            if (peppa != 0) {
               cardClickedMatchedAudioEasteregg.play();
               cardClickedMatchedAudioEasteregg.volume = 0.7;
             }
-            
+
 
             for (let i = 0; i < arrayOfCardIds.length; i++) {
               if (arrayOfCardIds[i] == firstCardRevealed) {
@@ -284,7 +284,7 @@ function cardClicked(idOfClickedCard, PokemonIndex) {
 
             lifes++;
           } else {
-            if(peppa != 0){
+            if (peppa != 0) {
               cardClickedNotMatchedAudioEasteregg.play();
               cardClickedNotMatchedAudioEasteregg.volume = 0.1;
             }
